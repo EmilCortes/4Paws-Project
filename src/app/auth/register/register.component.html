@@ -1,0 +1,47 @@
+<div class="container justify-content-center">
+  <div class="container">
+    <button class="menu-button" (click)="toggleSidebar()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+      <div class="card bg-dark text-white">
+        <div class="card-header">
+          <h2 class="text-center">Registro de Usuario 🐾</h2>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="formReg" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input
+                type="text"
+                class="form-control"
+                id="email"
+                formControlName="email"
+                placeholder="Tu correo electrónico"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Contraseña</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                formControlName="password"
+                placeholder="Tu contraseña"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Registrar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-sidebar [isSidebarOpen]="isSidebarOpen" (isSidebarOpenChange)="isSidebarOpen = $event"></app-sidebar>

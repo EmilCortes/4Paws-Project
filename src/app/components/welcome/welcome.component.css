@@ -1,0 +1,21 @@
+h1 {
+  font-weight: bold !important;
+}
+
+h5 {
+  font-weight: bold !important;
+}
+
+
+.card {
+  border: #333 solid 2px;
+  border-radius: 10px;
+}
+
+.card-with-gradient {
+  background: linear-gradient(36deg, rgba(223, 162, 38, 1) 22%, rgba(215, 166, 16, 1) 45%, rgba(245, 226, 104, 1)95%);
+}
+
+.btn {
+  border: #333 solid 1px;
+}

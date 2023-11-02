@@ -1,0 +1,38 @@
+<div class="container d-flex justify-content-start">
+  <div class="mt-1">
+    <button class="menu-button" (click)="toggleSidebar()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </button>
+  </div>
+  <div class="logoHome text-center mx-auto">
+    <img src="../../../assets/images/4Paws-logo-welcome.jpg" alt="imgWelcome">
+  </div>
+</div>
+
+<div class="container text-center mb-5">
+  <h2>Establecimientos Destacados</h2>
+</div>
+
+<div class="d-flex container">
+  <div class="row justify-content-center">
+    <div class="col-12 mb-4" *ngFor="let establishment of featuredEstablishments">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header text-center">
+            <h5 class="card-title cardName">{{ establishment.name }}</h5>
+          </div>
+          <div class="card-body text-center">
+            <p class="card-text">{{ establishment.description }}</p>
+          </div>
+          <div class="card-footer text-center">
+            <p class="card-text cardAdress">{{ establishment.adress }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-sidebar [isSidebarOpen]="isSidebarOpen" (isSidebarOpenChange)="isSidebarOpen = $event"></app-sidebar>

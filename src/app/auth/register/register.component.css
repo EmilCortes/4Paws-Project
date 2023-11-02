@@ -1,0 +1,46 @@
+a {
+  display: flex;
+  align-items: center;
+  color: #333;
+  text-decoration: none;
+  margin: 10px;
+}
+
+i {
+  margin-right: 5px;
+  font-size: 20px;
+}
+
+.menu-button {
+  background-color: transparent;
+  border: 2px solid black;
+  cursor: pointer;
+  padding: 7px;
+  margin-top: 3px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bar {
+  width: 30px;
+  height: 4px;
+  background-color: #333;
+  transition: 0.4s;
+  border-radius: 2px;
+  margin: 3px 0;
+}
+
+.menu-button.open .bar:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.menu-button.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-button.open .bar:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}

@@ -1,0 +1,78 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@fortawesome/fontawesome-free/css/all.css";
+@import '~maplibre-gl/dist/maplibre-gl.css';
+
+body {
+  background-color: rgb(245, 226, 104);
+  margin: 0;
+  padding: 0;
+  font-family: Quicksand;
+}
+
+/* Estilos para el componente de sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px; /* Inicialmente oculto */
+  width: 250px;
+  height: 100%;
+  background-color: #333;
+  color: #fff;
+  transition: left 0.3s ease; /* Transición suave al mostrar/ocultar */
+}
+
+.sidebar.open {
+  left: 0; /* Muestra el menú lateral cuando se agrega la clase 'open' */
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 10px;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* Estilos para el botón de hamburguesa en el componente Welcome */
+.menu-button {
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.menu-button:hover {
+  background-color: #ddd;
+}
+
+/* Estilo personalizado para el Popup */
+.custom-popup {
+  background-color: rgba(223, 162, 38); /* Color de fondo */
+  border-radius: 10px; /* Esquinas redondeadas */
+  padding: 15px;
+  color: #ffffff; /* Color del texto */
+  font-size: 16px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); /* Sombra */
+  max-width: 250px;
+  text-align: center;
+}
+
+.custom-popup h3 {
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.custom-popup p {
+  margin: 10px 0;
+}

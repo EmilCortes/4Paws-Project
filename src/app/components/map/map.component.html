@@ -1,0 +1,17 @@
+<div class="navbar">
+  <div class="container d-flex justify-content-start">
+    <div class="mt-1">
+      <button class="menu-button" (click)="toggleSidebar()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="map-wrap">
+  <div class="map" #map></div>
+</div>
+
+<app-sidebar [isSidebarOpen]="isSidebarOpen" (isSidebarOpenChange)="isSidebarOpen = $event"></app-sidebar>

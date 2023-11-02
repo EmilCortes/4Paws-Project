@@ -1,0 +1,72 @@
+<div class="container justify-content-center">
+  <div class="container">
+    <button class="menu-button" (click)="toggleSidebar()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </button>
+  </div>
+</div>
+
+<!-- Mensaje de éxito -->
+<div *ngIf="profileUpdated && user && user.displayName">
+  <div class="alert alert-success" role="alert">
+    Perfil actualizado correctamente.
+  </div>
+</div>
+
+<!-- Mensaje de error -->
+<div *ngIf="profileUpdated && user && !user.displayName">
+  <div class="alert alert-danger" role="alert">
+    Error al actualizar el perfil.
+  </div>
+</div>
+
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+      <div class="card bg-dark text-white">
+        <div class="card-header">
+          <h2 class="text-center">Mi Perfil 🐾</h2>
+        </div>
+        <div class="card-body">
+          <form (ngSubmit)="updateProfile()" #profileForm="ngForm">
+            <div class="mb-3">
+              <label for="name" class="form-label">Nombre:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                [(ngModel)]="updatedName"
+                name="displayName"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="address" class="form-label">Dirección:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="address"
+                [(ngModel)]="updatedAddress"
+                name="address"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="telephone" class="form-label">Teléfono:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="telephone"
+                [(ngModel)]="updatedTelephone"
+                name="telephone"
+              />
+            </div>
+            <button type="submit" class="btn btn-warning">Actualizar Perfil</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-sidebar [isSidebarOpen]="isSidebarOpen" (isSidebarOpenChange)="isSidebarOpen = $event"></app-sidebar>

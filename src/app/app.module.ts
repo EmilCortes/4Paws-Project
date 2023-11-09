@@ -23,6 +23,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { MapComponent } from './components/map/map.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,6 @@ import { MapComponent } from './components/map/map.component';
     ForgotPasswordComponent,
     UserProfileComponent,
     MapComponent,
-
   ],
   imports: [
     BrowserModule,

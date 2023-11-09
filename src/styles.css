@@ -76,3 +76,8 @@ body {
 .custom-popup p {
   margin: 10px 0;
 }
+
+.custom-popup hr {
+  border: 0.5px solid #000000;
+  margin: 10px 0;
+}

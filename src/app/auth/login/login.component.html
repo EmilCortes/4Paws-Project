@@ -19,32 +19,21 @@
           <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
             <div class="mb-3">
               <label for="email" class="form-label">Email</label>
-              <input
-                type="text"
-                class="form-control"
-                id="email"
-                formControlName="email"
-                placeholder="Tu correo electrónico"
-              />
+              <input type="text" class="form-control" id="email" formControlName="email"
+                placeholder="Tu correo electrónico" />
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Contraseña</label>
-              <input
-                type="password"
-                class="form-control"
-                id="password"
-                formControlName="password"
-                placeholder="Tu contraseña"
-              />
+              <input type="password" class="form-control" id="password" formControlName="password"
+                placeholder="Tu contraseña" />
             </div>
             <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
           </form>
           <div class="mt-3">
-            <button
-              class="btn btn-info"
-              (click)="onClick()"
-            >
-              Iniciar Sesión con Google <img src="https://static.vecteezy.com/system/resources/previews/016/716/465/original/gmail-icon-free-png.png" alt="gmail-logo" class="gmailLogo">
+            <button class="btn btn-info" (click)="onClick()">
+              Iniciar Sesión con Google <img
+                src="https://static.vecteezy.com/system/resources/previews/016/716/465/original/gmail-icon-free-png.png"
+                alt="gmail-logo" class="gmailLogo">
             </button>
           </div>
         </div>

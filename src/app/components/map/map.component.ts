@@ -17,7 +17,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('map')
   private mapContainer!: ElementRef<HTMLElement>;
   firestoreSubscription: Subscription | undefined;
-  private clickStartTime: number | null = null;
+  // private clickStartTime: number | null = null;
 
   constructor(private firestore: AngularFirestore) { }
 
@@ -82,13 +82,8 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
 
   registerEstablishmet() {
     if (this.map) {
-      console.log('BUCLE IF INICIAL');
-
-      this.map.on('mouseup', (event) => {
-        console.log('Fin de clic');
-
-        const clickDuration = Date.now();
-
+      const mouseupCallback = (event: any) => {
+        let clickDuration = Date.now();
         // Verifica si la duración del clic fue mayor a 2 segundos (2000 milisegundos)
         if (clickDuration > 2000) {
           const lat = event.lngLat.lat;
@@ -101,11 +96,11 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
           }
 
           //this.saveDataInFirebase(Establishment);
-          console.log('BUCLE MARKER', lat, long);
+          this.map!.off('mouseup', mouseupCallback);
         }
-
-      });
-    } console.log('BUCLE SALIDA METDO');
+      };
+      this.map.on('mouseup', mouseupCallback);
+    }
   }
 
   timer: any;

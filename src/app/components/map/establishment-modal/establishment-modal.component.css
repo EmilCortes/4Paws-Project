@@ -1,9 +1,9 @@
 .modal {
   position: fixed;
-  top: 50%;
+  top: 55%;
   left: 50%;
-  width: 300px;
-  height: 535px;
+  width: auto;
+  height: auto;
   background: rgba(0, 0, 0, 0.5);
   display: block;
   justify-content: center;

@@ -1,0 +1,32 @@
+<div class="modal">
+  <div class="modal-content">
+
+    <form [formGroup]="establishmentForm" class="p-4">
+      <div class="mb-3">
+        <label for="name" class="form-label">Nombre:</label>
+        <input type="text" id="name" formControlName="name" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Descripción:</label>
+        <input type="text" id="description" formControlName="description" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="address" class="form-label">Dirección:</label>
+        <input type="text" id="address" formControlName="address" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="telephone" class="form-label">Teléfono:</label>
+        <input type="text" id="telephone" formControlName="telephone" class="form-control">
+      </div>
+
+      <div class="text-center">
+        <button type="button" (click)="saveData()" class="btn btn-primary">Guardar</button>
+        <br>
+        <button type="button" (click)="closeModal()" class="btn btn-secondary mt-2 px-3">Cerrar</button>
+      </div>
+    </form>
+  </div>
+</div>

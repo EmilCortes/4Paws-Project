@@ -21,6 +21,8 @@ import { RegisterComponent } from './auth/register/register.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { MapComponent } from './components/map/map.component';
+import { EstablishmentModalComponent } from './components/map/establishment-modal/establishment-modal.component';
+
 
 
 
@@ -35,6 +37,7 @@ import { MapComponent } from './components/map/map.component';
     ForgotPasswordComponent,
     UserProfileComponent,
     MapComponent,
+    EstablishmentModalComponent,
   ],
   imports: [
     BrowserModule,

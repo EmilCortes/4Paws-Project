@@ -10,9 +10,18 @@
   </div>
 </div>
 
+
 <div class="map-wrap">
   <div class="map" #map (mousedown)="startTimer()" (mouseup)="stopTimer()"></div>
 </div>
 
 
 <app-sidebar [isSidebarOpen]="isSidebarOpen" (isSidebarOpenChange)="isSidebarOpen = $event"></app-sidebar>
+
+<div class="modal-placeholder" *ngIf="showModal">
+  <app-establishment-modal
+    [markerInfo]="markerInfo"
+    (modalClosed)="handleModalClosed()"
+    (dataSaved)="saveDataInFirebase($event)"
+  ></app-establishment-modal>
+</div>

@@ -3,6 +3,8 @@ import { Map, MapStyle, config, Marker, Popup } from '@maptiler/sdk';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Subscription } from 'rxjs';
 import { Establishment } from 'src/app/models/establishment.model';
+import { EstablishmentModalComponent } from './establishment-modal/establishment-modal.component';
+
 
 
 @Component({
@@ -12,11 +14,20 @@ import { Establishment } from 'src/app/models/establishment.model';
 })
 export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  isSidebarOpen = false;
+  isSidebarOpen: boolean = false;
   map: Map | undefined;
   @ViewChild('map')
   private mapContainer!: ElementRef<HTMLElement>;
+  @ViewChild(EstablishmentModalComponent)
+  private establishmentModal!: EstablishmentModalComponent
   firestoreSubscription: Subscription | undefined;
+  showModal: boolean = false;
+  markerInfo: any;
+  updatedName: string = '';
+  updatedDescription: string = '';
+  updatedAddress: string = '';
+  timer: any;
+  timerDuration: number = 2000;
   // private clickStartTime: number | null = null;
 
   constructor(private firestore: AngularFirestore) { }
@@ -50,6 +61,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
           const marker = new Marker({ color: "#FF0000" })
             .setLngLat([long, lat])
             .addTo(this.map);
+
           //Popup para mostrar info del marcador.
           const popupContent = `
         <div class="custom-popup">
@@ -81,6 +93,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
   registerEstablishmet() {
+
     if (this.map) {
       const mouseupCallback = (event: any) => {
         let clickDuration = Date.now();
@@ -90,9 +103,13 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
           const long = event.lngLat.lng;
 
           if (this.map) {
-            new Marker()
+            let marker = new Marker()
               .setLngLat([long, lat])
               .addTo(this.map);
+
+            this.showModal = true;
+            this.markerInfo = { lat, long, name: '', adress: '', description: '' };
+            console.log(this.markerInfo);
           }
 
           //this.saveDataInFirebase(Establishment);
@@ -103,8 +120,6 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  timer: any;
-  timerDuration: number = 2000;
 
   startTimer() {
     this.timer = setTimeout(() => {
@@ -115,6 +130,14 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
 
   stopTimer() {
     clearTimeout(this.timer);
+  }
+
+  handleModalClosed() {
+    // Reset fields or take any necessary actions when the modal is closed
+    this.showModal = false;
+    this.updatedName = '';
+    this.updatedDescription = '';
+    this.updatedAddress = '';
   }
 
   ngOnDestroy() {

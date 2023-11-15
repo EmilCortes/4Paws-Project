@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Establishment } from 'src/app/models/establishment.model';
 
 @Component({
   selector: 'app-establishment-modal',
@@ -9,7 +10,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class EstablishmentModalComponent {
   @Input() markerInfo: any;
   @Output() modalClosed = new EventEmitter<any>();
-  @Output() dataSaved = new EventEmitter<any>();
+  @Output() dataSaved = new EventEmitter<Establishment>();
 
   establishmentForm: FormGroup;
 
@@ -17,7 +18,7 @@ export class EstablishmentModalComponent {
     this.establishmentForm = this.fb.group({
       name: '',
       description: '',
-      address: '',
+      adress: '',
       telephone: ''
     });
   }
@@ -28,7 +29,10 @@ export class EstablishmentModalComponent {
 
   saveData() {
     const formData = this.establishmentForm.value;
-    // Agregar validaciones u otras lógicas según sea necesario antes de guardar
-    this.dataSaved.emit(formData);
+    const establishmentData: Establishment = {
+      ...this.markerInfo,
+      ...formData
+    };
+    this.dataSaved.emit(establishmentData);
   }
 }

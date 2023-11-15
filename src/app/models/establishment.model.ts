@@ -1,4 +1,3 @@
-// src/app/models/establishment.model.ts
 export interface Establishment {
   adress?: string;
   description: string;
@@ -7,5 +6,4 @@ export interface Establishment {
   long: number;
   name: string;
   telephone?: number;
-  // Otros campos relevantes
 }

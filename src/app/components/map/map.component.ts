@@ -19,7 +19,6 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('map')
   private mapContainer!: ElementRef<HTMLElement>;
   @ViewChild(EstablishmentModalComponent)
-  private establishmentModal!: EstablishmentModalComponent
   firestoreSubscription: Subscription | undefined;
   showModal: boolean = false;
   markerInfo: any;
@@ -28,7 +27,6 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   updatedAddress: string = '';
   timer: any;
   timerDuration: number = 2000;
-  // private clickStartTime: number | null = null;
 
   constructor(private firestore: AngularFirestore) { }
 
@@ -123,7 +121,6 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
 
   startTimer() {
     this.timer = setTimeout(() => {
-      // Aquí puedes llamar a tu método cuando se haya cumplido el tiempo
       this.registerEstablishmet();
     }, this.timerDuration);
   }
@@ -133,7 +130,6 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   handleModalClosed() {
-    // Reset fields or take any necessary actions when the modal is closed
     this.showModal = false;
     this.updatedName = '';
     this.updatedDescription = '';

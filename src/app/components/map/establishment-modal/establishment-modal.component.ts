@@ -18,7 +18,7 @@ export class EstablishmentModalComponent {
     this.establishmentForm = this.fb.group({
       name: '',
       description: '',
-      adress: '',
+      address: '',
       telephone: ''
     });
   }

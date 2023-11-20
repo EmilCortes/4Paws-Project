@@ -51,8 +51,8 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.firestoreSubscription = this.firestore.collection('establishments').valueChanges().subscribe((establecimientos: any[]) => {
       establecimientos.forEach((establecimiento) => {
-        const { lat, long, name, adress, description } = establecimiento;
-        console.log(lat, long, name, adress)
+        const { lat, long, name, address, description } = establecimiento;
+        console.log(lat, long, name, address)
 
         // Crea un marcador para cada establecimiento
         if (this.map) {
@@ -67,7 +67,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
           <hr>
           <p><strong>Descripción:</strong> ${description}</p>
           <hr>
-          <p><strong>Dirección:</strong>  ${adress}</p>
+          <p><strong>Dirección:</strong>  ${address}</p>
         </div>
       `;
           marker.setPopup(new Popup({ closeButton: false }).setHTML(popupContent));
@@ -106,7 +106,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
               .addTo(this.map);
 
             this.showModal = true;
-            this.markerInfo = { lat, long, name: '', adress: '', description: '' };
+            this.markerInfo = { lat, long, name: '', address: '', description: '' };
             console.log(this.markerInfo);
           }
 

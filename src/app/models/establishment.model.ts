@@ -1,5 +1,5 @@
 export interface Establishment {
-  adress?: string;
+  address?: string;
   description: string;
   img?: string;
   lat: number;

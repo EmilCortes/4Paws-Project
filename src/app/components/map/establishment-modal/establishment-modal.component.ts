@@ -11,6 +11,7 @@ export class EstablishmentModalComponent {
   @Input() markerInfo: any;
   @Output() modalClosed = new EventEmitter<any>();
   @Output() dataSaved = new EventEmitter<Establishment>();
+  @Output() cancelMarker = new EventEmitter<any>();
 
   establishmentForm: FormGroup;
 
@@ -24,6 +25,7 @@ export class EstablishmentModalComponent {
   }
 
   closeModal() {
+    this.cancelMarker.emit();
     this.modalClosed.emit();
   }
 
@@ -35,4 +37,5 @@ export class EstablishmentModalComponent {
     };
     this.dataSaved.emit(establishmentData);
   }
+
 }

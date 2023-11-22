@@ -110,6 +110,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
             console.log(this.markerInfo);
           }
 
+
           //this.saveDataInFirebase(Establishment);
           this.map!.off('mouseup', mouseupCallback);
         }

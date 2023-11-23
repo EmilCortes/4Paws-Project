@@ -24,7 +24,7 @@
       </div>
 
       <div class="text-center">
-        <button type="button" (click)="saveData()" class="btn btn-primary">Guardar</button>
+        <button type="button" (click)="saveData()" class="btn btn-primary" [disabled]="establishmentForm.invalid || establishmentForm.pristine">Guardar</button>
         <br>
         <button type="button" (click)="closeModal()" class="btn btn-secondary mt-2 px-3">Cerrar</button>
       </div>

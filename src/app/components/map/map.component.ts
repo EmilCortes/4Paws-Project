@@ -27,6 +27,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   updatedAddress: string = '';
   timer: any;
   timerDuration: number = 2000;
+  marker: any;
 
   constructor(private firestore: AngularFirestore) { }
 
@@ -52,7 +53,6 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
     this.firestoreSubscription = this.firestore.collection('establishments').valueChanges().subscribe((establecimientos: any[]) => {
       establecimientos.forEach((establecimiento) => {
         const { lat, long, name, address, description } = establecimiento;
-        console.log(lat, long, name, address)
 
         // Crea un marcador para cada establecimiento
         if (this.map) {
@@ -72,7 +72,6 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
       `;
           marker.setPopup(new Popup({ closeButton: false }).setHTML(popupContent));
         }
-
       });
     });
   }
@@ -91,27 +90,21 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
   registerEstablishmet() {
-
     if (this.map) {
       const mouseupCallback = (event: any) => {
         let clickDuration = Date.now();
-        // Verifica si la duración del clic fue mayor a 2 segundos (2000 milisegundos)
+
         if (clickDuration > 2000) {
           const lat = event.lngLat.lat;
           const long = event.lngLat.lng;
 
           if (this.map) {
-            let marker = new Marker()
+            this.marker = new Marker()
               .setLngLat([long, lat])
               .addTo(this.map);
-
             this.showModal = true;
             this.markerInfo = { lat, long, name: '', address: '', description: '' };
-            console.log(this.markerInfo);
           }
-
-
-          //this.saveDataInFirebase(Establishment);
           this.map!.off('mouseup', mouseupCallback);
         }
       };
@@ -135,6 +128,11 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
     this.updatedName = '';
     this.updatedDescription = '';
     this.updatedAddress = '';
+
+    if (this.map && this.marker) {
+      this.marker.remove();
+      this.marker = null;
+    }
   }
 
   ngOnDestroy() {

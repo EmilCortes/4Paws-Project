@@ -68,3 +68,8 @@ i {
 .menu-button.open .bar:nth-child(3) {
   transform: translateY(-6px) rotate(-45deg);
 }
+
+.map-wrap.disabled {
+  cursor: default;
+  pointer-events: none;
+}

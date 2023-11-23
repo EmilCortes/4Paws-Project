@@ -6,7 +6,6 @@ import { Establishment } from 'src/app/models/establishment.model';
 import { EstablishmentModalComponent } from './establishment-modal/establishment-modal.component';
 
 
-
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -28,6 +27,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   timer: any;
   timerDuration: number = 2000;
   marker: any;
+  mapClickEnabled: boolean = true;
 
   constructor(private firestore: AngularFirestore) { }
 
@@ -99,6 +99,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
           const long = event.lngLat.lng;
 
           if (this.map) {
+            this.mapClickEnabled = false;
             this.marker = new Marker()
               .setLngLat([long, lat])
               .addTo(this.map);
@@ -128,6 +129,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
     this.updatedName = '';
     this.updatedDescription = '';
     this.updatedAddress = '';
+    this.mapClickEnabled = true;
 
     if (this.map && this.marker) {
       this.marker.remove();

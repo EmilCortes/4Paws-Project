@@ -11,7 +11,7 @@
 </div>
 
 
-<div class="map-wrap">
+<div class="map-wrap" [class.disabled]="!mapClickEnabled">
   <div class="map" #map (mousedown)="startTimer()" (mouseup)="stopTimer()"></div>
 </div>
 

@@ -12,7 +12,6 @@ export class EstablishmentModalComponent {
   @Output() modalClosed = new EventEmitter<any>();
   @Output() dataSaved = new EventEmitter<Establishment>();
 
-
   establishmentForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
@@ -37,5 +36,4 @@ export class EstablishmentModalComponent {
     this.dataSaved.emit(establishmentData);
     this.closeModal();
   }
-
 }

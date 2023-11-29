@@ -7,6 +7,5 @@ export const environment = {
     apiKey: 'AIzaSyDfhZGXbOOJQboMivRCIunSVgpPO6mST0U',
     authDomain: 'paws-project-5f250.firebaseapp.com',
     messagingSenderId: '918420882677',
-    // databaseURL: 'https://paws-project-5f250.europe-west1.firebasedatabase.app'
   },
 };

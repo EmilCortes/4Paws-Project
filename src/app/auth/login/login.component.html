@@ -32,11 +32,14 @@
             <button type="submit" class="btn btn-primary my-2">Iniciar Sesión</button>
             <button class="btn btn-info " (click)="onClick()">
               Iniciar Sesión con Google <img
-                src="https://static.vecteezy.com/system/resources/previews/016/716/465/original/gmail-icon-free-png.png"
+                src="../../assets/images/gmail-icon-free-png.webp"
                 alt="gmail-logo" class="gmailLogo">
             </button>
           </div>
         </div>
+        <p class="text-center" style="display: inline-block;">
+          ¿No tienes cuenta? <a [routerLink]="['/register']" style="display: inline-block;"> <u>Regístrate</u> </a>
+        </p>
         <p class="text-center">
           <a [routerLink]="['/forgot-password']">¿Olvidaste tu contraseña?</a>
         </p>

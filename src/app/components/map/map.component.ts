@@ -4,7 +4,8 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Subscription } from 'rxjs';
 import { Establishment } from 'src/app/models/establishment.model';
 import { EstablishmentModalComponent } from './establishment-modal/establishment-modal.component';
-
+import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-map',
@@ -29,7 +30,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   marker: any;
   mapClickEnabled: boolean = true;
 
-  constructor(private firestore: AngularFirestore) { }
+  constructor(private firestore: AngularFirestore, private authService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     config.apiKey = 'Z13xUz0m9r3uxpiYgs2r';
@@ -90,26 +91,30 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
   registerEstablishmet() {
-    if (this.map) {
-      const mouseupCallback = (event: any) => {
-        let clickDuration = Date.now();
+    if (this.authService.isAuthenticated) {
+      if (this.map) {
+        const mouseupCallback = (event: any) => {
+          let clickDuration = Date.now();
 
-        if (clickDuration > 2000) {
-          const lat = event.lngLat.lat;
-          const long = event.lngLat.lng;
+          if (clickDuration > 2000) {
+            const lat = event.lngLat.lat;
+            const long = event.lngLat.lng;
 
-          if (this.map) {
-            this.mapClickEnabled = false;
-            this.marker = new Marker()
-              .setLngLat([long, lat])
-              .addTo(this.map);
-            this.showModal = true;
-            this.markerInfo = { lat, long, name: '', address: '', description: '' };
+            if (this.map) {
+              this.mapClickEnabled = false;
+              this.marker = new Marker()
+                .setLngLat([long, lat])
+                .addTo(this.map);
+              this.showModal = true;
+              this.markerInfo = { lat, long, name: '', address: '', description: '' };
+            }
+            this.map!.off('mouseup', mouseupCallback);
           }
-          this.map!.off('mouseup', mouseupCallback);
-        }
-      };
-      this.map.on('mouseup', mouseupCallback);
+        };
+        this.map.on('mouseup', mouseupCallback);
+      }
+    } else {
+      this.router.navigate(['/login']);
     }
   }
 
